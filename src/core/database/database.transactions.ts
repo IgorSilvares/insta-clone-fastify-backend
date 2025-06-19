@@ -31,6 +31,8 @@ export const createTransactionHelpers = (db: Database) => {
             return statements.createReel.get(data)
         },
         getAll: () => {
+            const allReels = statements.getAllReels.all()
+            console.log("DATABASE TRANSACTION: Raw reels from DB:", allReels)
             return statements.getAllReels.all()
         },
     }
