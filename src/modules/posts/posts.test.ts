@@ -1,3 +1,5 @@
+//day 5
+
 import Fastify from "fastify"
 import { postsRoutes } from "./posts.routes"
 
