@@ -8,7 +8,6 @@ export interface Reel {
     created_at: string
 }
 
-// Define a type for the data needed to create a reel
 type CreateReelData = {
     video_url: string
     description: string | null

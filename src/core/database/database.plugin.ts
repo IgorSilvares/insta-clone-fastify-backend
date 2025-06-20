@@ -1,4 +1,3 @@
-// src/core/database/database.plugin.ts
 import type { FastifyInstance } from "fastify"
 import fp from "fastify-plugin"
 import Database from "better-sqlite3"

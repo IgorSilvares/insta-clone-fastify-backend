@@ -1,5 +1,5 @@
 import type { FastifyInstance, FastifyPluginAsync } from "fastify"
-import { reelsService, Reel } from "./reels.service" // Import Reel (for response type hint)
+import { reelsService, Reel } from "./reels.service"
 
 // Define a type for the request body
 type CreateReelBody = {
