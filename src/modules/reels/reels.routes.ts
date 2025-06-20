@@ -1,11 +1,6 @@
 import type { FastifyInstance, FastifyPluginAsync } from "fastify"
-import { reelsService, Reel } from "./reels.service" // Import Reel (for response type hint)
-
-// Define a type for the request body
-type CreateReelBody = {
-    video_url: string
-    description: string | null
-}
+import { reelsService } from "./reels.service"
+import { CreateReelBody } from "./reels.types"
 
 const reelsRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
     const service = reelsService(fastify)
@@ -20,6 +15,7 @@ const reelsRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
     fastify.get("/reels/grid", async (request, reply) => {
         const reels = await service.getAll()
 
+        // Return a 200 Succes status code with the reels object
         return reply.code(200).send(reels)
     })
 }
