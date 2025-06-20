@@ -1,6 +1,5 @@
 import type { FastifyInstance } from "fastify"
 
-// Define the Reel type here and export it (required by reels.test.ts)
 export interface Reel {
     id: number
     video_url: string

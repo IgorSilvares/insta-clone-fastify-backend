@@ -20,6 +20,7 @@ const reelsRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
     fastify.get("/reels/grid", async (request, reply) => {
         const reels = await service.getAll()
 
+        // Return a 200 status code with all reels
         return reply.code(200).send(reels)
     })
 }
