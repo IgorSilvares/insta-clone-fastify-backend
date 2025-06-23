@@ -13,7 +13,7 @@ export const createTransactionHelpers = (db: Database) => {
             "INSERT INTO reels (video_url, description, thumbnail_url) VALUES (@video_url, @description, @thumbnail_url) RETURNING *"
         ),
         getAllReels: db.prepare("SELECT * FROM reels"),
-        getReelsById: db.prepare("SELECT * FROM reels WHERE id = ?"),
+        getReelById: db.prepare("SELECT * FROM reels WHERE id = ?"),
     }
 
     const posts = {
