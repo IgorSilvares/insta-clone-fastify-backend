@@ -23,7 +23,7 @@ async function databasePluginHelper(fastify: FastifyInstance) {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         img_url TEXT NOT NULL,
         caption TEXT,
-        created_at TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%SZ', 'now'))
+        created_at TEXT DEFAULT CURRENT_TIMESTAMP
       );
     `)
     db.exec(`
@@ -33,7 +33,16 @@ async function databasePluginHelper(fastify: FastifyInstance) {
         thumbnail_url TEXT NOT NULL,
         description TEXT,
         views INTEGER DEFAULT 0,
-        created_at TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%SZ', 'now'))
+        created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      );
+    `)
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS tagged_posts (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      img_url TEXT NOT NULL,
+      caption TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      who_tagged TEXT NOT NULL,
       );
     `)
 

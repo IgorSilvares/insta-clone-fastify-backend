@@ -14,6 +14,11 @@ export const createTransactionHelpers = (db: Database) => {
         ),
         getAllReels: db.prepare("SELECT * FROM reels"),
         getReelById: db.prepare("SELECT * FROM reels WHERE id = ?"),
+
+        createTagged: db.prepare(
+            "INSERT INTO tagged_posts (img_url, caption, who_tagged) VALUES (@img_url, @caption, @who_tagged) RETURNING *"
+        ),
+        getAllTagged: db.prepare("SELECT * FROM tagged_posts"),
     }
 
     const posts = {
@@ -39,9 +44,25 @@ export const createTransactionHelpers = (db: Database) => {
         },
     }
 
+    const tagged_posts = {
+        create: (data: {
+            img_url: string
+            caption: string
+            who_tagged: string
+        }) => {
+            return statements.createTagged.get(data)
+        },
+        getAll: () => {
+            const allTagged = statements.getAllTagged.all()
+            console.log("DATABASE TRANSACTION: Raw tagged from DB:", allTagged)
+            return statements.getAllTagged.all()
+        },
+    }
+
     return {
         posts,
         reels,
+        tagged_posts,
     }
 }
 

@@ -1,5 +1,3 @@
-//day 5
-
 import Fastify from "fastify"
 import { postsRoutes } from "./posts.routes"
 
@@ -21,6 +19,10 @@ describe("POST /posts", () => {
                 create: jest.fn().mockReturnValue(createdPost),
             },
             reels: {
+                create: jest.fn(),
+                getAll: jest.fn(),
+            },
+            tagged_posts: {
                 create: jest.fn(),
                 getAll: jest.fn(),
             },
@@ -47,13 +49,11 @@ describe("GET /posts", () => {
                 id: 1,
                 img_url: "http://example.com/img1.jpg",
                 caption: "Test Post 1",
-                created_at: "2024-01-01T10:00:00Z",
             },
             {
                 id: 2,
                 img_url: "http://example.com/img2.jpg",
                 caption: "Test Post 2",
-                created_at: "2024-02-02T12:00:00Z",
             },
         ]
 
@@ -64,6 +64,10 @@ describe("GET /posts", () => {
                 getAll: jest.fn().mockReturnValue(mockPosts),
             },
             reels: {
+                create: jest.fn(),
+                getAll: jest.fn(),
+            },
+            tagged_posts: {
                 create: jest.fn(),
                 getAll: jest.fn(),
             },
