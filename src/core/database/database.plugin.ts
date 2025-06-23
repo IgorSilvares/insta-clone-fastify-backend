@@ -1,5 +1,3 @@
-//day 5
-
 import type { FastifyInstance } from "fastify"
 import fp from "fastify-plugin"
 import Database from "better-sqlite3"

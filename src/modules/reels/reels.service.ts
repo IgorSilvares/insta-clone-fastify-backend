@@ -1,16 +1,9 @@
-//day 5
-
 import type { FastifyInstance } from "fastify"
-
-// Define a type for the data needed to create a reel
-type CreateReelData = {
-    video_url: string
-    description: string | null
-}
+import { ReelCreationInput } from "./reel.schema"
 
 export const reelsService = (fastify: FastifyInstance) => {
     return {
-        create: async (reelData: CreateReelData) => {
+        create: async (reelData: ReelCreationInput) => {
             fastify.log.info(`Creating a new reel`)
             const reel = fastify.transactions.reels.create(reelData)
             return reel

@@ -1,6 +1,6 @@
-//day 5
-
 import type { Database } from "better-sqlite3"
+import { type PostCreationInput } from "src/modules/posts/post.schema"
+import { type ReelCreationInput } from "src/modules/reels/reel.schema"
 
 export const createTransactionHelpers = (db: Database) => {
     const statements = {
@@ -10,7 +10,7 @@ export const createTransactionHelpers = (db: Database) => {
             "INSERT INTO posts (img_url, caption) VALUES (@img_url, @caption) RETURNING *"
         ),
         createReel: db.prepare(
-            "INSERT INTO reels (video_url, description) VALUES (@video_url, @description) RETURNING *"
+            "INSERT INTO reels (video_url, description, thumbnail_url) VALUES (@video_url, @description, @thumbnail_url) RETURNING *"
         ),
         getAllReels: db.prepare("SELECT * FROM reels"),
         getReelsById: db.prepare("SELECT * FROM reels WHERE id = ?"),
@@ -23,13 +23,13 @@ export const createTransactionHelpers = (db: Database) => {
         getAll: () => {
             return statements.getAllPosts.all()
         },
-        create: (data: { img_url: string; caption: string }) => {
+        create: (data: PostCreationInput) => {
             return statements.createPost.get(data)
         },
     }
 
     const reels = {
-        create: (data: { video_url: string; description: string | null }) => {
+        create: (data: ReelCreationInput) => {
             return statements.createReel.get(data)
         },
         getAll: () => {
