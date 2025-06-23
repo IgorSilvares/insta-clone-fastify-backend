@@ -33,7 +33,7 @@ async function databasePluginHelper(fastify: FastifyInstance) {
         thumbnail_url TEXT NOT NULL,
         description TEXT,
         views INTEGER DEFAULT 0,
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+        created_at TEXT DEFAULT CURRENT_TIMESTAMP
       );
     `)
     db.exec(`
@@ -42,7 +42,7 @@ async function databasePluginHelper(fastify: FastifyInstance) {
       img_url TEXT NOT NULL,
       caption TEXT,
       created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-      who_tagged TEXT NOT NULL,
+      who_tagged TEXT NOT NULL
       );
     `)
 
