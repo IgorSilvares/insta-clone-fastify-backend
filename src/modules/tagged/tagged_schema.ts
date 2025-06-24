@@ -7,7 +7,7 @@ export const tagged_postsSchema = z.object({
     who_tagged: z.string(),
 })
 
-export type tagged_post = z.infer<typeof tagged_postsSchema>
+export type TaggedPost = z.infer<typeof tagged_postsSchema>
 
 export interface taggedPostCreationInput {
     img_url: string
