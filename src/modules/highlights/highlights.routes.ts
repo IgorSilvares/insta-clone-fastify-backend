@@ -33,3 +33,5 @@ const highlightsRoutes: FastifyPluginAsync = async (
         }
     )
 }
+
+export { highlightsRoutes }

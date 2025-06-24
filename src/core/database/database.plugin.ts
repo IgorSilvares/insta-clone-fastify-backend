@@ -45,6 +45,13 @@ async function databasePluginHelper(fastify: FastifyInstance) {
       who_tagged TEXT NOT NULL
       );
     `)
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS highlights (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      cover_img_url TEXT NOT NULL,
+      title TEXT
+      );
+    `)
 
     const transactions = createTransactionHelpers(db)
 

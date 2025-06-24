@@ -2,7 +2,7 @@ import { z } from "zod"
 
 export const highlightsSchema = z.object({
     id: z.number().int().positive(),
-    cover_image_url: z.string().url("Must be a valid image URL"),
+    cover_img_url: z.string().url("Must be a valid image URL"),
     title: z.string(),
 })
 

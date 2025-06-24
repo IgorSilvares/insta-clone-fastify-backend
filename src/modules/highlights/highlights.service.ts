@@ -6,8 +6,7 @@ export const highlightsService = (fastify: FastifyInstance) => {
         create: async (highlightData: HighlightCreationInput) => {
             fastify.log.info(`Creating a new highlight`)
 
-            const highlight =
-                fastify.transactions.highlights.create(highlightData)
+            const highlight = fastify.transactions.highlights.create(highlightData)
             return highlight
         },
 

@@ -23,7 +23,7 @@ export const createTransactionHelpers = (db: Database) => {
         getAllTagged: db.prepare("SELECT * FROM tagged_posts"),
         getTaggedById: db.prepare("SELECT * FROM tagged_posts WHERE id = ?"),
         createHighlight: db.prepare(
-            "INSERT INTO highlights (cover_img_url, title) VALUES (@cover_img_url, @title)"
+            "INSERT INTO highlights (cover_img_url, title) VALUES (@cover_img_url, @title) RETURNING *"
         ),
         getHighlightById: db.prepare("SELECT * FROM highlights WHERE id = ?"),
         getAllHighlights: db.prepare("SELECT * FROM highlights"),
