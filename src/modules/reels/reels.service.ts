@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify"
-import { ReelCreationInput } from "./reel.schema"
+import { ReelCreationInput } from "./reels.schema"
 
 export const reelsService = (fastify: FastifyInstance) => {
     return {

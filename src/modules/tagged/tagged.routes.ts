@@ -1,11 +1,10 @@
 import { fastify, type FastifyInstance, type FastifyPluginAsync } from "fastify"
 import { taggedService } from "./tagged.service"
-import { CreateTaggedBody } from "./tagged.types"
-
+import { taggedPostCreationInput } from "./tagged_schema"
 const taggedRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
     const service = taggedService(fastify)
 
-    fastify.post<{ Body: CreateTaggedBody }>(
+    fastify.post<{ Body: taggedPostCreationInput }>(
         "/tagged",
         async (request, reply) => {
             const newTagged = await service.create(request.body)

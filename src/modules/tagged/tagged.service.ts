@@ -1,15 +1,9 @@
-import { fastify, type FastifyInstance } from "fastify"
-import { CreateTaggedBody } from "./tagged.types"
-
-type CreateTaggedData = {
-    img_url: string
-    caption: string
-    who_tagged: string
-}
+import { type FastifyInstance } from "fastify"
+import { taggedPostCreationInput } from "./tagged_schema"
 
 export const taggedService = (fastify: FastifyInstance) => {
     return {
-        create: async (taggedData: CreateTaggedData) => {
+        create: async (taggedData: taggedPostCreationInput) => {
             fastify.log.info(`Creating a new tagged post`)
             const tagged_post =
                 fastify.transactions.tagged_posts.create(taggedData)

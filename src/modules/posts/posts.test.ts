@@ -21,10 +21,17 @@ describe("POST /posts", () => {
             reels: {
                 create: jest.fn(),
                 getAll: jest.fn(),
+                getById: jest.fn(),
             },
             tagged_posts: {
                 create: jest.fn(),
                 getAll: jest.fn(),
+                getById: jest.fn(),
+            },
+            highlights: {
+                create: jest.fn(),
+                getAll: jest.fn(),
+                getById: jest.fn(),
             },
         })
 
@@ -59,17 +66,24 @@ describe("GET /posts", () => {
 
         app.decorate("transactions", {
             posts: {
-                create: jest.fn(),
                 getById: jest.fn(),
-                getAll: jest.fn().mockReturnValue(mockPosts),
+                getAll: jest.fn(),
+                create: jest.fn(),
             },
             reels: {
                 create: jest.fn(),
                 getAll: jest.fn(),
+                getById: jest.fn(),
             },
             tagged_posts: {
                 create: jest.fn(),
                 getAll: jest.fn(),
+                getById: jest.fn(),
+            },
+            highlights: {
+                create: jest.fn(),
+                getAll: jest.fn(),
+                getById: jest.fn(),
             },
         })
 

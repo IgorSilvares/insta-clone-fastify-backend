@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify"
-import { PostCreationInput } from "./post.schema"
+import { PostCreationInput } from "./posts.schema"
 
 export const postsService = (fastify: FastifyInstance) => {
     return {

@@ -21,17 +21,24 @@ describe("GET /tagged/grid", () => {
 
         app.decorate("transactions", {
             posts: {
-                create: jest.fn(),
-                getAll: jest.fn(),
                 getById: jest.fn(),
+                getAll: jest.fn(),
+                create: jest.fn(),
             },
             reels: {
                 create: jest.fn(),
                 getAll: jest.fn(),
+                getById: jest.fn(),
             },
             tagged_posts: {
-                create: jest.fn().mockReturnValue(mockTaggedPosts),
+                create: jest.fn(),
                 getAll: jest.fn(),
+                getById: jest.fn(),
+            },
+            highlights: {
+                create: jest.fn(),
+                getAll: jest.fn(),
+                getById: jest.fn(),
             },
         })
 

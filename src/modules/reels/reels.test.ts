@@ -9,17 +9,24 @@ describe("GET /reels/grid", () => {
         // 'transactions' dependency, including all methods on 'posts'.
         app.decorate("transactions", {
             posts: {
-                create: jest.fn(),
-                getAll: jest.fn(),
                 getById: jest.fn(),
+                getAll: jest.fn(),
+                create: jest.fn(),
             },
             reels: {
                 create: jest.fn(),
                 getAll: jest.fn(),
+                getById: jest.fn(),
             },
             tagged_posts: {
                 create: jest.fn(),
                 getAll: jest.fn(),
+                getById: jest.fn(),
+            },
+            highlights: {
+                create: jest.fn(),
+                getAll: jest.fn(),
+                getById: jest.fn(),
             },
         })
 

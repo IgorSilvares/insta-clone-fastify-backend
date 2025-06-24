@@ -1,7 +1,7 @@
 //day 5
 import type { FastifyInstance, FastifyPluginAsync } from "fastify"
 import { reelsService } from "./reels.service"
-import { ReelCreationInput } from "./reel.schema"
+import { ReelCreationInput } from "./reels.schema"
 
 const reelsRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
     const service = reelsService(fastify)

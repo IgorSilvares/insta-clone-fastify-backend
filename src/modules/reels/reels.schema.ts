@@ -9,7 +9,7 @@ export const reelSchema = z.object({
     created_at: z.string().datetime(),
 })
 
-export type Reel = z.infer<typeof reelSchema>
+export type reels = z.infer<typeof reelSchema>
 
 export interface ReelCreationInput {
     video_url: string

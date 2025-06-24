@@ -1,6 +1,6 @@
 import type { FastifyInstance, FastifyPluginAsync } from "fastify"
 import { postsService } from "./posts.service"
-import { PostCreationInput } from "./post.schema"
+import { PostCreationInput } from "./posts.schema"
 
 const postsRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
     const service = postsService(fastify)
