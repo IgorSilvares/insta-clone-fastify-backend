@@ -1,7 +1,6 @@
 import { FastifyInstance, FastifyPluginAsync } from "fastify"
 import { highlightsService } from "./highlights.service"
 import { HighlightCreationInput, HighlightParams } from "./highlights.schema"
-import { request } from "node:https"
 
 const highlightsRoutes: FastifyPluginAsync = async (
     fastify: FastifyInstance
@@ -24,7 +23,7 @@ const highlightsRoutes: FastifyPluginAsync = async (
     })
 
     fastify.get<{ Params: HighlightParams }>(
-        "/highlight:id",
+        "/highlights/:id",
         async (request, reply) => {
             const id = parseInt(request.params.id)
             const highlight = await service.getById(id)
