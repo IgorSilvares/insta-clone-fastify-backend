@@ -1,20 +1,35 @@
 import { type FastifyInstance } from "fastify"
-import { taggedPostCreationInput } from "./tagged_schema"
+import { TaggedPostUserCreationInput } from "./tagged.schema"
 
 export const taggedService = (fastify: FastifyInstance) => {
     return {
-        create: async (taggedData: taggedPostCreationInput) => {
+        create: async (taggedData: TaggedPostUserCreationInput) => {
             fastify.log.info(`Creating a new tagged post`)
             const tagged_post =
-                fastify.transactions.tagged_posts.create(taggedData)
+                fastify.transactions.taggedPostUsers.create(taggedData)
             return tagged_post
         },
 
-        getAll: async () => {
-            fastify.log.info(`Getting all tagged posts`)
-            const tagged_posts = fastify.transactions.tagged_posts.getAll()
-            //fastify.log.info(`Retrieved reels from transactions: ${JSON.stringify(tagged_posts)}`)
-            return tagged_posts
+        getTaggedPostsByUser: async (username: string) => {
+            fastify.log.info(
+                `Getting all tagged posts for user with username: ${username}`
+            )
+            const tagged_post =
+                fastify.transactions.taggedPostUsers.getPostsByUser(username)
+            return tagged_post
+        },
+
+        getUsersInTaggedPost: async (postId: number) => {
+            fastify.log.info(
+                `Getting all users taggeds in the post with id: ${postId}`
+            )
+            const tagged_users =
+                fastify.transactions.taggedPostUsers.getUsersInPost(postId)
+            return tagged_users
+        },
+
+        getTaggedPostById: async (id: number) => {
+            fastify.log.info(``)
         },
     }
 }
